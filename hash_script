@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# Ensure that a 4-digit integer is provided as an argument
+if [ "$#" -ne 1 ] || ! [[ "$1" =~ ^[0-9]{4}$ ]]; then
+    echo "Usage: $0 <4-digit integer>"
+    exit 1
+fi
+
+# Hash the input using SHA-256
+echo -n "$1" | sha256sum > hash_output.txt
+echo "Hash generated and saved in hash_output.txt"
